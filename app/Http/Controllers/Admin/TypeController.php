@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Type;
-use App\Http\Requests\Type\StoreTypeRequest;
-use App\Http\Requests\Type\UpdateTypeRequest;
+use App\Http\Requests\Auth\Technology\StoreTypeRequest;
+use App\Http\Request\Auth\Technology\UpdateTypeRequest;
 
 use App\Http\Controllers\Controller;
 

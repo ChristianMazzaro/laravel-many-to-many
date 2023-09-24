@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TypeController;
+use App\Http\Controllers\Admin\TechnologyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,6 +44,8 @@ Route::middleware(['auth', 'verified'])
         Route::get('/types/{id}/edit', [TypeController::class, 'edit'])->name('types.edit');
         Route::put('/types/{id}', [TypeController::class, 'update'])->name('types.update');
         Route::delete('/types/{id}', [TypeController::class, 'destroy'])->name('types.destroy');
+        Route::resource('technologies',TechnologyController::class);
+
 });
 
 // Route::get('/dashboard', function () {

@@ -30,10 +30,16 @@
                                 <a class="nav-link" href="{{ route('admin.types') }}">Tipologie</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.technologies.index') }}">Tecnologie</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.projects.create') }}">Aggiungi un nuovo progetto</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.types.create') }}">Aggiungi una nuova categoria</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.technologies.create') }}">Aggiungi una nuova tecnologia</a>
                             </li>
                         </ul>
                         <form method="POST" action="{{ route('logout') }}">

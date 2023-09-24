@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Type;
+namespace App\Http\Requests\Auth\Technology;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
-class UpdateTypeRequest extends FormRequest
+
+class UpdateTechnologyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +24,7 @@ class UpdateTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|max:255'
         ];
     }
 }
