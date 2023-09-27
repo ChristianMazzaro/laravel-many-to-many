@@ -12,8 +12,8 @@
                   <p class="card-text">{{$project->content}}</p>
                   @if (count($project->technologies) > 0)
                   @foreach ($project->technologies as $technology)
-                  <div>
-                    <span class="badge badge-pill badge-info">{{$project->title}}</span>
+                  <div class="card-text">
+                    <span class="badge rounded-pill text-bg-info">{{$technology->title}}</span>
                   </div>
                   @endforeach  
                   @else

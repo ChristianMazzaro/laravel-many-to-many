@@ -21,6 +21,14 @@
                 <input type="text" id="content" name="content" class="form-control" value="{{ old('content', $project->content) }}" required>
             </div>
             <div class="mb-3">
+                @foreach ($technologies as $technology)
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" name="technologies[]" id="technology-{{$technology->id}}" value="{{$technology->id}}">
+                    <label class="form-check-label text-primary" for="technology-{{$technology->id}}">{{$technology->title}}</label>
+                </div>
+                @endforeach
+            </div>
+            <div class="mb-3">
                 <label for="type_id" class="form-label">Tipologia</label>
                 <select class="form-select " id="type_id" name="type_id">
                     <option selected>Scegli una tipologia per il progetto...</option>

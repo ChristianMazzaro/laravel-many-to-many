@@ -51,6 +51,8 @@ class ProjectController extends Controller
             'technologies' => 'nullable|array',
             'technologies.*' => 'exists:technologies,id',
         ]);
+
+        // dump($validatedData);
     
         
         
@@ -59,15 +61,19 @@ class ProjectController extends Controller
         $project->slug = $validatedData['slug'];
         $project->content = $validatedData['content'];
         $project->type_id = $validatedData['type_id'];
+        
+        // dd($project);
 
+        
+        
+        $project->save();
+        
         foreach ($validatedData['technologies'] as $technologyId) {
             $project->technologies()->attach($technologyId);
         }
-        
-        $project->save();
     
         
-        return redirect()->route('admin.projects', ['id' => $project->id]);
+        return redirect()->route('admin.projects', [$project->id]);
     }
 
     /**
@@ -88,7 +94,8 @@ class ProjectController extends Controller
     {
         $types = Type::all();
         $project = Project::findOrFail($id);
-        return view('admin.projects.edit', compact('project'),compact('types'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project'),compact('types','technologies'));
     }
 
     /**
@@ -101,6 +108,8 @@ class ProjectController extends Controller
             'slug' => 'required|string|max:255',
             'content' => 'required',
             'type_id' => 'nullable|exists:types,id',
+            'technologies' => 'nullable|array',
+            'technologies.*' => 'exists:technologies,id',
         ]);
     
         $project = Project::findOrFail($id);
@@ -109,6 +118,10 @@ class ProjectController extends Controller
         $project->content = $validatedData['content'];
         $project->type_id = $validatedData['type_id'];
         $project->save();
+
+        foreach ($validatedData['technologies'] as $technologyId) {
+            $project->technologies()->attach($technologyId);
+        }
     
         return redirect()->route('admin.projects', ['id' => $project->id]);
     }

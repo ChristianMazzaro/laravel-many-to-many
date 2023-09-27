@@ -32,7 +32,7 @@
                             @if (count($project->technologies) > 0)
                             @foreach ($project->technologies as $technology)
                             <div>
-                              <span class="badge badge-pill badge-info">{{$project->title}}</span>
+                              <span class="badge badge-pill text-bg-info">{{$technology->title}}</span>
                             </div>
                             @endforeach  
                             @else
