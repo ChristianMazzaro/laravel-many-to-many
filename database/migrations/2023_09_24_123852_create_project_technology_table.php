@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('technology_id');
             $table->foreign('technology_id')->references('id')->on('technologies')->onDelete('cascade')->onUpdate('cascade');
+            // $table->primary('project_id','technology_id'); //utile per non inserire più coppie uguali
             $table->timestamps();
         });
     }
@@ -28,8 +29,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('project_technology');
         Schema::dropIfExists('project_technology');
-        $table->dropForeign(['project_id']);
-        $table->dropForeign(['technology_id']);
     }
 };
 

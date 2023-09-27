@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 //models
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 
 
 class ProjectController extends Controller
@@ -33,7 +34,8 @@ class ProjectController extends Controller
     {
 
         $types = Type::all();
-        return view('admin.projects.create',compact('types'));
+        $technologies = Technology::all();
+        return view('admin.projects.create',compact('types','technologies'));
     }
 
     /**
@@ -46,6 +48,8 @@ class ProjectController extends Controller
             'slug' => 'required|string|max:255',
             'content' => 'required',
             'type_id' => 'nullable|exists:types,id',
+            'technologies' => 'nullable|array',
+            'technologies.*' => 'exists:technologies,id',
         ]);
     
         
@@ -55,7 +59,10 @@ class ProjectController extends Controller
         $project->slug = $validatedData['slug'];
         $project->content = $validatedData['content'];
         $project->type_id = $validatedData['type_id'];
-    
+
+        foreach ($validatedData['technologies'] as $technologyId) {
+            $project->technologies()->attach($technologyId);
+        }
         
         $project->save();
     

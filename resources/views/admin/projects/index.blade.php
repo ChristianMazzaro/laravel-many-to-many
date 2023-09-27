@@ -12,7 +12,8 @@
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
                     <th scope="col">Slug</th>
-                    <th scope="col">Categorie</th>
+                    <th scope="col">Tipologie</th>
+                    <th scope="col">Tecnologie</th>
                     <th scope="col">Pulsanti</th>
                   </tr>
                 </thead>
@@ -26,6 +27,19 @@
                             <a href="{{ route('admin.types.show', $project->type->id) }}">
                                 {{$project->type->title}}
                             </a>
+                        </td>
+                        <td>
+                            @if (count($project->technologies) > 0)
+                            @foreach ($project->technologies as $technology)
+                            <div>
+                              <span class="badge badge-pill badge-info">{{$project->title}}</span>
+                            </div>
+                            @endforeach  
+                            @else
+                            <div class="text-center">
+                              ---
+                            </div>
+                            @endif
                         </td>
                         <td>
                             <a href="projects/{{$project->id}}" class="btn btn-primary my-2">Dettagli</a>

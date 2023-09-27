@@ -10,6 +10,17 @@
                   <h5 class="card-title">{{$project->title}}</h5>
                   <h6 class="card-subtitle mb-2 text-muted">{{$project->slug}}</h6>
                   <p class="card-text">{{$project->content}}</p>
+                  @if (count($project->technologies) > 0)
+                  @foreach ($project->technologies as $technology)
+                  <div>
+                    <span class="badge badge-pill badge-info">{{$project->title}}</span>
+                  </div>
+                  @endforeach  
+                  @else
+                  <div>
+                    ---
+                  </div>
+                  @endif
                   <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-warning my-2">Modifica</a>
                   <form action="{{ route('admin.projects.destroy', ['id' => $project->id]) }}" method="POST">
                     @csrf

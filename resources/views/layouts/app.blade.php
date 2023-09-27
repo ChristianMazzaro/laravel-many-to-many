@@ -36,7 +36,7 @@
                                 <a class="nav-link" href="{{ route('admin.projects.create') }}">Aggiungi un nuovo progetto</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.types.create') }}">Aggiungi una nuova categoria</a>
+                                <a class="nav-link" href="{{ route('admin.types.create') }}">Aggiungi una nuova tipologia</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.technologies.create') }}">Aggiungi una nuova tecnologia</a>
